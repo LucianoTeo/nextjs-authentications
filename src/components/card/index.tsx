@@ -1,12 +1,23 @@
-import { HTMLAttributes } from "react"
+import { HTMLAttributes } from 'react'
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
+  padding?: number
+  title?: string
   children: React.ReactNode
 }
 
-function Card({ children, ...rest }: CardProps) {
+function Card({ padding, className, children, title, ...rest }: CardProps) {
   return (
-    <div {...rest}>
+    <div className={`
+      h-full
+      p-8 
+      border border-gray-200
+      bg-white 
+      rounded-lg 
+      ${className}`}
+      {...rest}
+    >
+      {title && <strong> {title} </strong>}
       {children}
     </div>
   )
